@@ -41,9 +41,7 @@
             }
         ]
     },
-    "overrides": [
-        { "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] }
-    ],
+    "overrides": [{ "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] }],
     "settings": {
         "import/resolver": {
             "alias": {
