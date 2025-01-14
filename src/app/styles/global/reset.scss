@@ -4,24 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-    height: 100%;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Poppins", "Arial", sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    color: #000000;
-
-    background-color: #ffffff;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
-
 img {
     display: block;
     max-width: 100%;
@@ -46,5 +28,3 @@ button {
     background-color: transparent;
     padding: 0;
 }
-
-

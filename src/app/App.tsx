@@ -1,10 +1,13 @@
 import './styles/index.scss';
-import { Button } from '@/shared/Button/Button';
+
+import { AppRouter } from '@/app/providers/router';
+import { Header } from '@/features/Header';
 
 const App = () => {
     return (
         <div className="app">
-            <Button>adsadsasdasd</Button>
+            <Header />
+            <AppRouter />
         </div>
     );
 };

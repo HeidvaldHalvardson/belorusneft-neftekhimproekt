@@ -1,0 +1,32 @@
+@use '@/app/styles/global/variables' as *;
+
+.Button {
+    background-color: $blue;
+    box-shadow: 2px 0 4px 0 $blue;
+    color: #ffffff;
+
+    &.primary {
+        padding: 9px 38px;
+        border-radius: 5px;
+    }
+
+    &.search {
+        padding: 5px 20px;
+        border-radius: 0 4px 4px 0;
+    }
+
+    &.clear {
+        border-radius: 5px;
+    }
+
+    &:hover {
+        box-shadow: none;
+        background-color: $blue-hover;
+    }
+
+    &:disabled {
+        cursor: auto;
+        box-shadow: none;
+        background-color: #b1b1b1;
+    }
+}

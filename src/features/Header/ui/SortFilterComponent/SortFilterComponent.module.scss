@@ -1,0 +1,60 @@
+@use '@/app/styles/global/variables' as *;
+
+.SortFilterComponent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    @media (min-width: 660px) {
+        gap: 20px;
+    }
+
+    @media (min-width: 1200px) {
+        gap: 50px;
+    }
+}
+
+.sortText {
+    color: #929292;
+    margin-right: 10px;
+}
+
+.sortWrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .activeText:first-child {
+        margin-right: 5px;
+
+        @media (min-width: 1200px) {
+            margin-right: 20px;
+        }
+    }
+}
+
+.activeText {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: $blue;
+}
+
+.label {
+    flex-grow: 0;
+}
+
+.labelText {
+    color: $blue;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.input {
+    border: none;
+    max-width: 150px;
+    padding: 0 5px;
+}
+
+.clear {
+    color: #4f4f4f;
+}

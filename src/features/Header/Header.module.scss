@@ -1,0 +1,49 @@
+.Header {
+    background-color: #e5e5e5;
+    min-height: 80px;
+}
+
+.wrapper {
+    padding-top: 18px;
+    padding-bottom: 40px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    @media (min-width: 1200px) {
+        padding-bottom: 0;
+    }
+}
+
+.search {
+    position: absolute;
+    bottom: 0;
+
+    @media (min-width: 1200px) {
+        position: relative;
+        margin-left: 10px;
+    }
+}
+
+.logo {
+    @media (min-width: 1200px) {
+        margin-left: 312px;
+    }
+}
+
+.filter {
+    transition: all 0.3s ease-in-out;
+}
+
+.show {
+    pointer-events: auto;
+    padding: 15px 0;
+    opacity: 1;
+}
+
+.hidden {
+    pointer-events: none;
+    padding: 0;
+    opacity: 0;
+}

@@ -1,4 +1,14 @@
-@use "reset";
+@use 'global/reset';
+@use 'global/variables';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+
+    background-color: #ffffff;
+}
 
 .app {
     min-height: 100vh;
