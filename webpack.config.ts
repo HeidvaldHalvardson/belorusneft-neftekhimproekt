@@ -18,7 +18,7 @@ interface ConfigEnv {
 
 const config = (env: ConfigEnv): CustomConfiguration => {
     const mode = env.mode || 'development';
-    const PORT = env.port || 3001;
+    const PORT = env.port || 3000;
 
     const isDev = mode === 'development';
 

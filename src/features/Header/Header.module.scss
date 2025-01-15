@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-    padding-top: 18px;
+    padding-top: 10px;
     padding-bottom: 40px;
     position: relative;
 
@@ -12,6 +12,7 @@
     align-items: center;
 
     @media (min-width: 1200px) {
+        padding-top: 18px;
         padding-bottom: 0;
     }
 }
@@ -40,10 +41,12 @@
     pointer-events: auto;
     padding: 15px 0;
     opacity: 1;
+    line-height: 100%;
 }
 
 .hidden {
     pointer-events: none;
     padding: 0;
     opacity: 0;
+    line-height: 50%;
 }

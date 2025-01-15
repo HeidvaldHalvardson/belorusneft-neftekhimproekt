@@ -2,13 +2,13 @@ import type { ChangeEvent } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-import type { SortType } from '@/features/Header/types';
+import type { SortParams } from '@/entities/VideoList';
 
 import styles from './SortFilterComponent.module.scss';
 
 interface SortFilterComponentProps {
     className?: string;
-    onSortChange?: (value: SortType) => void;
+    onSortChange?: (value: SortParams) => void;
     onFilterChange?: (value: string) => void;
 }
 
@@ -30,11 +30,11 @@ export const SortFilterComponent = (props: SortFilterComponentProps) => {
     }, [filterValue, onFilterChange]);
 
     const sortByDateHandler = () => {
-        onSortChange('date');
+        // onSortChange('date');
     };
 
     const sortByViewsHandler = () => {
-        onSortChange('views');
+        // onSortChange('views');
     };
 
     const onFilterChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {

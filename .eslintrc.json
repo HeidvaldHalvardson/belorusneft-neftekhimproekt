@@ -44,6 +44,9 @@
     "overrides": [{ "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] }],
     "settings": {
         "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+            },
             "alias": {
                 "map": [["@", "./src"]],
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
