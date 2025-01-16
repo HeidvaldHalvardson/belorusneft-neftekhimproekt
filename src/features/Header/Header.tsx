@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
@@ -20,7 +20,7 @@ interface HeaderProps {
 
 export const Header = (props: HeaderProps) => {
     const { className = '' } = props;
-    const [_, setSearchParams] = useSearchParams();
+    const [, setSearchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const { sort, filter } = useSelector(getQueryParams);
     const { setFilter: setFilterPage } = useLocalFilter();
@@ -35,7 +35,7 @@ export const Header = (props: HeaderProps) => {
                 return prev;
             });
         },
-        [dispatch],
+        [dispatch, setSearchParams],
     );
 
     const setFilter = useCallback(
@@ -47,7 +47,7 @@ export const Header = (props: HeaderProps) => {
                 return prev;
             });
         },
-        [dispatch, filter],
+        [dispatch, setSearchParams],
     );
 
     return (
