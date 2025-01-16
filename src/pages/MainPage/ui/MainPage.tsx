@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -8,7 +8,6 @@ import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { getQueryParams, queryParamsActions } from '@/entities/queryParams';
 import { getAllVideos } from '@/entities/VideoList';
 import { CardList } from '@/shared/ui/CardList';
-import { Modal } from '@/shared/ui/Modal';
 import type { PageSize } from '@/shared/ui/Pagination';
 import { Pagination } from '@/shared/ui/Pagination';
 
@@ -97,16 +96,8 @@ const MainPage = () => {
             : videosList?.items;
     }, [filterPage, videosList]);
 
-    const [isOpenModal, setIsModalOpen] = useState(false);
-
     return (
         <>
-            <Modal
-                isOpen={isOpenModal}
-                title={'Create new card'}
-                onClose={() => setIsModalOpen(false)}
-            />
-            <button onClick={() => setIsModalOpen(true)}>open modal</button>
             {isLoading && <div>Loading...</div>}
             {error && <div>Что-то пошло не так...</div>}
             {filteredPageItems && filteredPageItems.length > 0 ? (
