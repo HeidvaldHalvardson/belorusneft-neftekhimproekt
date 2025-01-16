@@ -1,6 +1,6 @@
 import path from 'path';
 
-import CopyWebpackPlugin from 'copy-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { DefinePlugin, type Configuration } from 'webpack';
@@ -43,7 +43,7 @@ const config = (env: ConfigEnv): CustomConfiguration => {
             new DefinePlugin({
                 __IS_DEV__: JSON.stringify(isDev),
             }),
-            new CopyWebpackPlugin({
+            new CopyPlugin({
                 patterns: [
                     {
                         from: 'public/mockServiceWorker.js',

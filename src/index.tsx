@@ -8,40 +8,28 @@ import { StoreProvider } from '@/app/providers/StoreProvider';
 const container = document.getElementById('root');
 
 async function enableMocking() {
-    if (__IS_DEV__) {
-        const { worker } = await import('./app/mocks');
-        return worker.start();
-    }
-    return Promise.resolve();
+    const { worker } = await import('./app/mocks');
+    return worker.start({});
 }
 
 if (container) {
     const root = createRoot(container);
-    root.render(
-        <BrowserRouter>
-            <StoreProvider>
-                <LocalFilterProvider>
-                    <App />
-                </LocalFilterProvider>
-            </StoreProvider>
-        </BrowserRouter>,
-    );
 
-    // enableMocking()
-    //     .then(() => {
-    //         root.render(
-    //             <BrowserRouter>
-    //                 <StoreProvider>
-    //                     <LocalFilterProvider>
-    //                         <App />
-    //                     </LocalFilterProvider>
-    //                 </StoreProvider>
-    //             </BrowserRouter>,
-    //         );
-    //     })
-    //     .catch(error => {
-    //         console.error('Failed to start mocking:', error);
-    //     });
+    enableMocking()
+        .then(() => {
+            root.render(
+                <BrowserRouter>
+                    <StoreProvider>
+                        <LocalFilterProvider>
+                            <App />
+                        </LocalFilterProvider>
+                    </StoreProvider>
+                </BrowserRouter>,
+            );
+        })
+        .catch(error => {
+            console.error('Failed to start mocking:', error);
+        });
 } else {
     throw new Error(
         "Root element with ID 'root' was not found in the document. " +
