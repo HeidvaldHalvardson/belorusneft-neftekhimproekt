@@ -8,7 +8,7 @@ import { StoreProvider } from '@/app/providers/StoreProvider';
 const container = document.getElementById('root');
 
 async function enableMocking() {
-    if (process.env.NODE_ENV === 'development') {
+    if (__IS_DEV__) {
         const { worker } = await import('./app/mocks');
         return worker.start();
     }
