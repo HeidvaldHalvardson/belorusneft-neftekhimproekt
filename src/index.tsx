@@ -17,22 +17,31 @@ async function enableMocking() {
 
 if (container) {
     const root = createRoot(container);
+    root.render(
+        <BrowserRouter>
+            <StoreProvider>
+                <LocalFilterProvider>
+                    <App />
+                </LocalFilterProvider>
+            </StoreProvider>
+        </BrowserRouter>,
+    );
 
-    enableMocking()
-        .then(() => {
-            root.render(
-                <BrowserRouter>
-                    <StoreProvider>
-                        <LocalFilterProvider>
-                            <App />
-                        </LocalFilterProvider>
-                    </StoreProvider>
-                </BrowserRouter>,
-            );
-        })
-        .catch(error => {
-            console.error('Failed to start mocking:', error);
-        });
+    // enableMocking()
+    //     .then(() => {
+    //         root.render(
+    //             <BrowserRouter>
+    //                 <StoreProvider>
+    //                     <LocalFilterProvider>
+    //                         <App />
+    //                     </LocalFilterProvider>
+    //                 </StoreProvider>
+    //             </BrowserRouter>,
+    //         );
+    //     })
+    //     .catch(error => {
+    //         console.error('Failed to start mocking:', error);
+    //     });
 } else {
     throw new Error(
         "Root element with ID 'root' was not found in the document. " +
