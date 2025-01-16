@@ -8,8 +8,11 @@ import { StoreProvider } from '@/app/providers/StoreProvider';
 const container = document.getElementById('root');
 
 async function enableMocking() {
-    const { worker } = await import('./app/mocks');
-    return worker.start();
+    if (process.env.NODE_ENV === 'development') {
+        const { worker } = await import('./app/mocks');
+        return worker.start();
+    }
+    return Promise.resolve();
 }
 
 if (container) {
