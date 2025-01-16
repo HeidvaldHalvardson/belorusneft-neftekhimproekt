@@ -1,19 +1,22 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
-import { Pagination } from 'antd';
 import { useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
+import { useLocalFilter } from '@/app/providers/LocalFilterProvider';
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { getQueryParams, queryParamsActions } from '@/entities/queryParams';
 import { getAllVideos } from '@/entities/VideoList';
 import { CardList } from '@/shared/ui/CardList';
+import type { PageSize } from '@/shared/ui/Pagination';
+import { Pagination } from '@/shared/ui/Pagination';
 
 const MainPage = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
     const { page, limit, sort, filter } = useSelector(getQueryParams);
+    const { filter: filterPage } = useLocalFilter();
 
     const {
         data: videosList,
@@ -76,29 +79,42 @@ const MainPage = () => {
         });
     };
 
-    const limitHandler = (current: number, size: number) => {
+    const limitHandler = (size: number) => {
         setSearchParams(prev => {
             prev.set('limit', `${size}`);
             return prev;
         });
     };
 
+    const filteredPageItems = useMemo(() => {
+        return filterPage
+            ? videosList?.items.filter(item => {
+                  return item.snippet.title
+                      .toLowerCase()
+                      .includes(filterPage.toLowerCase());
+              })
+            : videosList?.items;
+    }, [filterPage, videosList]);
+
     return (
-        <div>
+        <>
             {isLoading && <div>Loading...</div>}
             {error && <div>Что-то пошло не так...</div>}
-            {videosList?.items && <CardList items={videosList.items} />}
+            {filteredPageItems && filteredPageItems.length > 0 ? (
+                <>
+                    <CardList items={filteredPageItems} />
+                </>
+            ) : (
+                <div>Ничего не найдено</div>
+            )}
             <Pagination
-                align="center"
                 total={videosList?.pageInfo.totalResults}
                 current={page}
-                onChange={pageHandler}
-                pageSize={limit}
-                showSizeChanger
-                onShowSizeChange={limitHandler}
-                pageSizeOptions={[12, 20, 32, 56]}
+                onChangePage={pageHandler}
+                onChangeSize={limitHandler}
+                pageSize={limit as PageSize}
             />
-        </div>
+        </>
     );
 };
 

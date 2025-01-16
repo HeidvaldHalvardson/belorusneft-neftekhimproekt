@@ -23,6 +23,7 @@ export const UserProfile = (props: UserProfileProps) => {
                     <AppLink to="/profile" className={styles.avatar}>
                         <Avatar />
                     </AppLink>
+                    <Button className={styles.button}>Добавить</Button>
                     <Button className={styles.button}>Выйти</Button>
                 </>
             ) : (

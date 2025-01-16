@@ -1,0 +1,51 @@
+.Pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    @media (min-width: 660px) {
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 1200px) {
+        margin-bottom: 50px;
+    }
+}
+
+.list {
+    display: flex;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+
+    &.current {
+        border: 1px solid #2f80ed;
+    }
+}
+
+.dots {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.select {
+    width: 105px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 0 13px;
+    appearance: none;
+    background-image: url('../../assets/down-arrow.png');
+    background-repeat: no-repeat;
+    background-position: center right 13px;
+}

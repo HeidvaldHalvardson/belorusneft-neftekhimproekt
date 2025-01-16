@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { QueryParams, VideoListResponse } from './types';
+import type { QueryParams, VideoItem, VideoListResponse } from './types';
 
 export const videosApi = createApi({
     reducerPath: 'videosApi',
@@ -13,7 +13,14 @@ export const videosApi = createApi({
                 };
             },
         }),
+        getVideoById: builder.query<VideoItem, string>({
+            query: (id: string) => {
+                return {
+                    url: `videos/${id}`,
+                };
+            },
+        }),
     }),
 });
 
-export const { useGetAllVideosQuery } = videosApi;
+export const { useGetAllVideosQuery, useGetVideoByIdQuery } = videosApi;

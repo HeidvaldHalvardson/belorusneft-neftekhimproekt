@@ -1,4 +1,8 @@
 import { SortParams, QueryParams } from './types';
-import { videosApi, useGetAllVideosQuery as getAllVideos } from './videosApi';
+import {
+    videosApi,
+    useGetAllVideosQuery as getAllVideos,
+    useGetVideoByIdQuery as getVideoById,
+} from './videosApi';
 
-export { getAllVideos, videosApi, SortParams, QueryParams };
+export { getAllVideos, getVideoById, videosApi, SortParams, QueryParams };

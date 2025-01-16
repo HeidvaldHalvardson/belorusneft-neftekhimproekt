@@ -1,9 +1,8 @@
 .CardList {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(auto-fill, 263px);
     gap: 30px 28px;
-    grid-template-columns: 264px;
+
     padding: 30px 0;
 }

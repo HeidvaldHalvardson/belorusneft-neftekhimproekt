@@ -1,0 +1,20 @@
+.ErrorPage {
+    height: calc(100vh - 105px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.title {
+    width: 235px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #828282;
+    margin-bottom: 20px;
+}
+
+.link {
+    color: #2f80ed;
+    text-decoration: none;
+}

@@ -7,8 +7,9 @@ export const getAllVideosHandler = http.get('/videos', ({ request }) => {
     const limit = +url.searchParams.get('limit');
     const page = +url.searchParams.get('page');
     const sort = url.searchParams.get('sort');
+    const filter = url.searchParams.get('filter').toLowerCase();
 
-    const sortData = [...mockData.items];
+    let sortData = [...mockData.items];
 
     const [field, direction] = sort.split('.');
 
@@ -26,6 +27,12 @@ export const getAllVideosHandler = http.get('/videos', ({ request }) => {
         return 0;
     });
 
+    if (filter) {
+        sortData = sortData.filter(item =>
+            item.snippet.title.toLowerCase().includes(filter),
+        );
+    }
+
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
 
@@ -33,6 +40,7 @@ export const getAllVideosHandler = http.get('/videos', ({ request }) => {
 
     return HttpResponse.json({
         ...mockData,
+        pageInfo: { ...mockData.pageInfo, totalResults: sortData.length },
         items,
     });
 });

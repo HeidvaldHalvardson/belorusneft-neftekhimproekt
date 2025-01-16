@@ -10,12 +10,13 @@ interface SearchInputProps {
     className?: string;
     onSubmit: (value: string) => void;
     showFilters?: () => void;
+    filter: string;
 }
 
 export const SearchInput = (props: SearchInputProps) => {
-    const { className = '', onSubmit, showFilters = () => {} } = props;
+    const { className = '', onSubmit, showFilters = () => {}, filter } = props;
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(filter);
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -44,6 +45,7 @@ export const SearchInput = (props: SearchInputProps) => {
                 className={styles.filterButton}
                 theme="clear"
                 onClick={showFilters}
+                type="button"
             >
                 <FilterSVG />
             </Button>

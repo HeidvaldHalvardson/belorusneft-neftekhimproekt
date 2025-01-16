@@ -28,6 +28,8 @@ export interface VideoStatistics {
 
 export interface VideoItem {
     id: string;
+    kind: string;
+    etag: string;
     snippet: VideoSnippet;
     statistics: VideoStatistics;
 }

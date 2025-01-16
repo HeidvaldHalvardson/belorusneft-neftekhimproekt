@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from '@/app/App';
+import { LocalFilterProvider } from '@/app/providers/LocalFilterProvider';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 
 const container = document.getElementById('root');
@@ -19,7 +20,9 @@ if (container) {
             root.render(
                 <BrowserRouter>
                     <StoreProvider>
-                        <App />
+                        <LocalFilterProvider>
+                            <App />
+                        </LocalFilterProvider>
                     </StoreProvider>
                 </BrowserRouter>,
             );

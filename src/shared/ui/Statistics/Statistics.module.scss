@@ -1,0 +1,18 @@
+.Statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.count {
+    font-size: 10px;
+    line-height: 100%;
+    color: #000;
+}

@@ -8,6 +8,7 @@ import styles from './SortFilterComponent.module.scss';
 
 interface SortFilterComponentProps {
     className?: string;
+    sort?: SortParams;
     onSortChange?: (value: SortParams) => void;
     onFilterChange?: (value: string) => void;
 }
@@ -15,6 +16,7 @@ interface SortFilterComponentProps {
 export const SortFilterComponent = (props: SortFilterComponentProps) => {
     const {
         className = '',
+        sort = 'date.asc',
         onSortChange = () => {},
         onFilterChange = () => {},
     } = props;
@@ -24,25 +26,36 @@ export const SortFilterComponent = (props: SortFilterComponentProps) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             onFilterChange(filterValue);
-        }, 300);
+        }, 500);
 
         return () => clearTimeout(timer);
     }, [filterValue, onFilterChange]);
-
-    const sortByDateHandler = () => {
-        // onSortChange('date');
-    };
-
-    const sortByViewsHandler = () => {
-        // onSortChange('views');
-    };
 
     const onFilterChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setFilterValue(e.target.value);
     };
 
+    const sortByDateHandler = () => {
+        if (sort.startsWith('views')) {
+            onSortChange('date.asc');
+        } else {
+            const newSort = sort === 'date.asc' ? 'date.desc' : 'date.asc';
+            onSortChange(newSort);
+        }
+    };
+
+    const sortByViewsHandler = () => {
+        if (sort.startsWith('date')) {
+            onSortChange('views.asc');
+        } else {
+            const newSort = sort === 'views.asc' ? 'views.desc' : 'views.asc';
+            onSortChange(newSort);
+        }
+    };
+
     const onClearHandler = () => {
-        onSortChange(null);
+        onSortChange('date.asc');
+        setFilterValue('');
         onFilterChange('');
     };
 
