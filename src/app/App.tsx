@@ -1,7 +1,7 @@
 import './styles/index.scss';
 
 import { AppRouter } from '@/app/providers/router';
-import { Header } from '@/features/Header';
+import { Header } from '@/widgets/Header';
 
 const App = () => {
     return (

@@ -8,10 +8,22 @@ interface UserProfileProps {
     className?: string;
     isAuth?: boolean;
     userName?: string;
+    signOut?: () => void;
+    signIn?: () => void;
+    signUp?: () => void;
+    addCard?: () => void;
 }
 
 export const UserProfile = (props: UserProfileProps) => {
-    const { className = '', isAuth = false, userName } = props;
+    const {
+        className = '',
+        isAuth = false,
+        userName,
+        signOut,
+        signIn,
+        signUp,
+        addCard,
+    } = props;
 
     return (
         <div className={`${styles.UserProfile} ${className}`}>
@@ -23,13 +35,21 @@ export const UserProfile = (props: UserProfileProps) => {
                     <AppLink to="/profile" className={styles.avatar}>
                         <Avatar />
                     </AppLink>
-                    <Button className={styles.button}>Добавить</Button>
-                    <Button className={styles.button}>Выйти</Button>
+                    <Button className={styles.button} onClick={addCard}>
+                        Добавить
+                    </Button>
+                    <Button className={styles.button} onClick={signOut}>
+                        Выйти
+                    </Button>
                 </>
             ) : (
                 <>
-                    <Button className={styles.button}>Регистрация</Button>
-                    <Button className={styles.button}>Войти</Button>
+                    <Button className={styles.button} onClick={signUp}>
+                        Регистрация
+                    </Button>
+                    <Button className={styles.button} onClick={signIn}>
+                        Войти
+                    </Button>
                 </>
             )}
         </div>

@@ -1,6 +1,9 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { QueryParamsSchema } from '@/entities/queryParams/types/QueryParamsSchema';
+import type { SortParams } from '@/entities/VideoList';
+
+import type { QueryParamsSchema } from '../types/QueryParamsSchema';
 
 const initialState: QueryParamsSchema = {
     params: {
@@ -15,16 +18,16 @@ const queryParamsSlice = createSlice({
     name: 'queryParams',
     initialState,
     reducers: {
-        setPage: (state, action) => {
+        setPage: (state, action: PayloadAction<number>) => {
             state.params.page = action.payload;
         },
-        setLimit: (state, action) => {
+        setLimit: (state, action: PayloadAction<number>) => {
             state.params.limit = action.payload;
         },
-        setSort: (state, action) => {
+        setSort: (state, action: PayloadAction<SortParams>) => {
             state.params.sort = action.payload;
         },
-        setFilter: (state, action) => {
+        setFilter: (state, action: PayloadAction<string>) => {
             state.params.filter = action.payload;
         },
     },

@@ -3,5 +3,11 @@ import {
     queryParamsActions,
     queryParamsReducer,
 } from './slice/queryParamsSlice';
+import { QueryParamsSchema } from './types/QueryParamsSchema';
 
-export { queryParamsReducer, queryParamsActions, getQueryParams };
+export {
+    queryParamsReducer,
+    queryParamsActions,
+    getQueryParams,
+    QueryParamsSchema,
+};

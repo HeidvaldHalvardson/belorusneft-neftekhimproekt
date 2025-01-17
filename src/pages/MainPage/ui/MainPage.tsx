@@ -6,6 +6,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { useLocalFilter } from '@/app/providers/LocalFilterProvider';
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { getQueryParams, queryParamsActions } from '@/entities/queryParams';
+import type { SortParams } from '@/entities/VideoList';
 import { getAllVideos } from '@/entities/VideoList';
 import { CardList } from '@/shared/ui/CardList';
 import type { PageSize } from '@/shared/ui/Pagination';
@@ -39,7 +40,7 @@ const MainPage = () => {
     );
 
     const setSort = useCallback(
-        (sort: string) => {
+        (sort: SortParams) => {
             dispatch(queryParamsActions.setSort(sort));
         },
         [dispatch],
@@ -55,7 +56,7 @@ const MainPage = () => {
     useEffect(() => {
         const queryPage = searchParams.get('page');
         const queryLimit = searchParams.get('limit');
-        const querySort = searchParams.get('sort');
+        const querySort = searchParams.get('sort') as SortParams;
         const queryFilter = searchParams.get('filter');
 
         if (queryPage) setPage(+queryPage);

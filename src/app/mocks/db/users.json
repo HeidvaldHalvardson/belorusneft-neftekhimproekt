@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Иван",
+      "lastName": "Иванов",
+      "email": "ivan.ivanov@example.com",
+      "password": "password123",
+      "token": "token123456"
+    },
+    {
+      "id": "2",
+      "firstName": "Мария",
+      "lastName": "Петрова",
+      "email": "maria.petrovna@example.com",
+      "password": "mypassword",
+      "token": "token654321"
+    }
+  ]
+}

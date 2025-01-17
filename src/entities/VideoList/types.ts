@@ -52,3 +52,9 @@ export interface QueryParams {
     sort?: SortParams;
     filter?: string;
 }
+
+export interface AddCard {
+    title?: string;
+    description?: string;
+    link?: string;
+}
