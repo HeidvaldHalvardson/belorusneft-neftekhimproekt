@@ -12,7 +12,6 @@ import type { SortParams } from '@/entities/VideoList';
 import { AddCardModal } from '@/features/AddCard';
 import { checkToken, SignInModal } from '@/features/SignIn';
 import { SignUpModal } from '@/features/SignUp/ui/SignUpModal/SignUpModal';
-import SingUpForm from '@/features/SignUp/ui/SingUpForm/SingUpForm';
 import { PageLayout } from '@/shared/layouts/PageLayout';
 import type { UserError } from '@/shared/types/userError';
 import type { UserType } from '@/shared/types/userType';
